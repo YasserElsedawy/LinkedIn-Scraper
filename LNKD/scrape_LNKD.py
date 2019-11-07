@@ -9,7 +9,10 @@ import json
 import datetime
 import os
 
-ACCOUNT = 2
+ACCOUNT = 1
+if ACCOUNT == 1: # James Hart
+	EMAIL_ADDRESS = "*****@gmail.com"
+	PASSWORD = "*****"
 elif ACCOUNT == 2: # Mark Tatum
 	EMAIL_ADDRESS = "*****@gmail.com"
 	PASSWORD = "*****"
@@ -201,11 +204,11 @@ driver.find_element_by_id("password").send_keys(PASSWORD)
 driver.find_element_by_class_name("login__form_action_container ").click()
 
 # Get the most recent time from partial results
-# last_partial_result = max([int(partial_result.split("-")[1].split(".")[0]) for partial_result in os.listdir("partial_results/") if partial_result[0] == "p"])
+last_partial_result = max([int(partial_result.split("-")[1].split(".")[0]) for partial_result in os.listdir("partial_results/") if partial_result[0] == "p"])
 
 # Load the current results data
-# with open("partial_results/partial_results-{}.json".format(last_partial_result)) as json_file:  
-#     partial_result = json.load(json_file)
+with open("partial_results/partial_results-{}.json".format(last_partial_result)) as json_file:  
+    partial_result = json.load(json_file)
 
 # Load previous metadata about where scraping left off
 with open("partial_results/most_recent_geo_idx.json") as json_file:  
